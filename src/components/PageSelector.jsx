@@ -5,6 +5,7 @@ import UseStatePage from '../pages/useState';
 import { usePokeHooksContext } from '../context/PokeHooksContext';
 import { PAGE_LAYOUT } from '../utils/constants';
 import UseEffectPage from '../pages/useEffect';
+import UseCallbackPage from '../pages/useCallback';
 
 const PageSelector = () => {
   const { page } = usePokeHooksContext();
@@ -19,7 +20,7 @@ const PageSelector = () => {
     case 'useEffect':
       return <UseEffectPage />;
     case 'useCallback':
-      return <></>;
+      return <UseCallbackPage />;
     case 'useMemo':
       return <></>;
     case 'useRef':
