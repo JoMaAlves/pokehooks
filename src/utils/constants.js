@@ -1,8 +1,8 @@
 export const PAGE_LAYOUT = [
-  { id: 'useState', subPages: ['theory', 'usage', 'altUsage'] },
   { id: 'title', subPages: [] },
   { id: 'classComponents', subPages: [] },
-  { id: 'useEffect', subPages: [] },
+  { id: 'useState', subPages: ['theory', 'usage', 'altUsage'] },
+  { id: 'useEffect', subPages: ['theory', 'usage'] },
   { id: 'useCallback', subPages: [] },
   { id: 'useMemo', subPages: [] },
   { id: 'useRef', subPages: [] },
