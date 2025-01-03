@@ -1,52 +1,42 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { usePokeHooksContext } from '../../../context/PokeHooksContext';
+import useFetch from '../../../hooks/useFetch';
 
 const useStore = () => {
   const { trainerCardInfo } = usePokeHooksContext();
 
-  const [store, setStore] = useState({});
-
-  const money = useMemo(
-    () =>
-      trainerCardInfo.money -
-      (store.pokeballs?.cost * trainerCardInfo.items.pokeballs +
-        store.potions?.cost * trainerCardInfo.items.potions),
-    [store, trainerCardInfo.items, trainerCardInfo.money]
+  const { data: storePokeballs } = useFetch(
+    'https://pokeapi.co/api/v2/item/poke-ball'
   );
 
-  useEffect(() => {
-    const getStoreItems = async () => {
-      const pokeballResponse = await fetch(
-        'https://pokeapi.co/api/v2/item/poke-ball'
-      );
+  const { data: storePotions } = useFetch(
+    'https://pokeapi.co/api/v2/item/super-potion'
+  );
 
-      const potionResponse = await fetch(
-        'https://pokeapi.co/api/v2/item/super-potion'
-      );
-
-      const dataPokeball = await pokeballResponse.json();
-      const dataPotion = await potionResponse.json();
-
-      const filteredData = {
-        pokeballs: {
-          cost: dataPokeball.cost,
-          sprite: dataPokeball.sprites.default,
-        },
-        potions: {
-          cost: dataPotion.cost,
-          sprite: dataPotion.sprites.default,
-        },
-      };
-
-      setStore(filteredData);
-    };
-
-    getStoreItems();
-  }, []);
+  const money = useMemo(() => {
+    const pokeballsCost =
+      storePokeballs?.cost * trainerCardInfo.items.pokeballs;
+    const potionsCost = storePotions?.cost * trainerCardInfo.items.potions;
+    return trainerCardInfo.money - (pokeballsCost + potionsCost);
+  }, [
+    storePokeballs?.cost,
+    storePotions?.cost,
+    trainerCardInfo.items,
+    trainerCardInfo.money,
+  ]);
 
   return {
     money,
-    store,
+    store: {
+      pokeballs: {
+        cost: storePokeballs?.cost,
+        sprite: storePokeballs?.sprites?.default,
+      },
+      potions: {
+        cost: storePotions?.cost,
+        sprite: storePotions?.sprites?.default,
+      },
+    },
   };
 };
 

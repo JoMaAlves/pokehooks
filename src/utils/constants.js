@@ -6,10 +6,9 @@ export const PAGE_LAYOUT = [
   { id: 'useCallback', subPages: ['theory', 'usage'] },
   { id: 'useMemo', subPages: ['theory', 'usage'] },
   { id: 'useRef', subPages: ['theory', 'usage'] },
-  { id: 'customHooks', subPages: [] },
-  { id: 'useReducer', subPages: [] },
-  { id: 'useContext', subPages: [] },
-  { id: 'newHooks', subPages: [] },
+  { id: 'customHooks', subPages: ['theory', 'usage'] },
+  { id: 'useReducer', subPages: ['theory'] },
+  { id: 'useContext', subPages: ['theory', 'usage'] },
   { id: 'end', subPages: [] },
 ];
 
