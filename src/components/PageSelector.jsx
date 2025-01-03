@@ -10,6 +10,8 @@ import UseMemoPage from '../pages/useMemo';
 import UseRefPage from '../pages/useRef';
 import CustomHooksPage from '../pages/customHook';
 import UseContextPage from '../pages/useContext';
+import UseReducerPage from '../pages/useReducer';
+import ChooseYouCharacter from '../pages/ChooseYourCharacter';
 
 const PageSelector = () => {
   const { page } = usePokeHooksContext();
@@ -17,8 +19,8 @@ const PageSelector = () => {
   switch (PAGE_LAYOUT[page.pageNumber].id) {
     case 'title':
       return <Title />;
-    case 'classComponents':
-      return <></>;
+    case 'chooseYourCharacter':
+      return <ChooseYouCharacter />;
     case 'useState':
       return <UseStatePage />;
     case 'useEffect':
@@ -34,7 +36,7 @@ const PageSelector = () => {
     case 'useContext':
       return <UseContextPage />;
     case 'useReducer':
-      return <></>;
+      return <UseReducerPage />;
 
     default:
       return <End />;

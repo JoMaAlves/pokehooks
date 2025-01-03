@@ -10,6 +10,7 @@ import {
 import { PAGE_LAYOUT } from '../utils/constants';
 
 const dafaultValues = {
+  character: 'red',
   items: {
     pokeballs: 0,
     potions: 0,
@@ -38,8 +39,14 @@ const reducer = (state, { type, payload }) => {
         name: payload,
       };
 
+    case 'CHARACTER':
+      return {
+        ...state,
+        character: payload,
+      };
+
     default:
-      return {};
+      return state;
   }
 };
 
@@ -51,6 +58,13 @@ const PokeHooksProvider = ({ children }) => {
     dafaultValues
   );
   const [page, setPage] = useState({ pageNumber: 0, subPageNumber: 0 });
+
+  const setNextPage = useCallback(() => {
+    setPage((prevPage) => ({
+      pageNumber: prevPage.pageNumber + 1,
+      subPageNumber: 0,
+    }));
+  }, []);
 
   const handleSlideFlow = useCallback(
     (event) => {
@@ -104,6 +118,7 @@ const PokeHooksProvider = ({ children }) => {
       value={{
         dispatchTrainerCardInfo,
         handleSlideFlow,
+        setNextPage,
         trainerCardInfo,
         page,
       }}

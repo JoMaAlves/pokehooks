@@ -26,6 +26,7 @@ const UseStateUsage = () => {
       <div className="col">
         <CodeImage src={useStateUsage} width={600} />
       </div>
+
       <div className="align-items-center col d-flex flex-column justify-content-center">
         {name && (
           <div
