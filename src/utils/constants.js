@@ -7,8 +7,8 @@ export const PAGE_LAYOUT = [
   { id: 'useMemo', subPages: ['theory', 'usage'] },
   { id: 'useRef', subPages: ['theory', 'usage'] },
   { id: 'customHooks', subPages: ['theory', 'usage'] },
-  { id: 'useReducer', subPages: ['theory'] },
   { id: 'useContext', subPages: ['theory', 'usage'] },
+  { id: 'useReducer', subPages: ['theory'] },
   { id: 'end', subPages: [] },
 ];
 

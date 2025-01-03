@@ -118,7 +118,9 @@ export const usePokeHooksContext = () => {
   const context = useContext(PokeHooksContext);
 
   if (!context) {
-    throw new Error('useDialog must be used within a DialogProvider');
+    throw new Error(
+      'usePokeHooksContext must be used within a PokeHooksProvider'
+    );
   }
 
   return context;

@@ -6,6 +6,10 @@ import { usePokeHooksContext } from '../context/PokeHooksContext';
 import { PAGE_LAYOUT } from '../utils/constants';
 import UseEffectPage from '../pages/useEffect';
 import UseCallbackPage from '../pages/useCallback';
+import UseMemoPage from '../pages/useMemo';
+import UseRefPage from '../pages/useRef';
+import CustomHooksPage from '../pages/customHook';
+import UseContextPage from '../pages/useContext';
 
 const PageSelector = () => {
   const { page } = usePokeHooksContext();
@@ -22,16 +26,14 @@ const PageSelector = () => {
     case 'useCallback':
       return <UseCallbackPage />;
     case 'useMemo':
-      return <></>;
+      return <UseMemoPage />;
     case 'useRef':
-      return <></>;
-    case 'useReducer':
-      return <></>;
+      return <UseRefPage />;
     case 'customHooks':
-      return <></>;
+      return <CustomHooksPage />;
     case 'useContext':
-      return <></>;
-    case 'newHooks':
+      return <UseContextPage />;
+    case 'useReducer':
       return <></>;
 
     default:
